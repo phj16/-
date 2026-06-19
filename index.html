@@ -563,21 +563,21 @@ const cheats=[
 
 ];
 
-const prefixes=[
-"Shadow","Dark","Ghost",
-"Rapid","Silent","Nova",
-"Cyber","Storm","Alpha",
-"Frost","Neon","Iron"
+const prefixes = [
+"Pro","Ultra","Dark","Shadow",
+"Ghost","Nova","Cyber","Rapid",
+"Silent","Alpha","Frost","Iron",
+"Neon","Storm","Hyper"
 ];
 
-const suffixes=[
-"Sniper","Hunter","Wolf",
-"Ace","Blade","Knight",
-"Tiger","Arrow","Strike",
-"Runner","Dragon","Player"
+const suffixes = [
+"Sniper","Hunter","Wolf","Ace",
+"Blade","Knight","Tiger","Dragon",
+"Strike","Player","Runner","Fox",
+"King","Hero","Master"
 ];
 
-function nickname(){
+function generateNickname(){
 
 return prefixes[
 Math.floor(Math.random()*prefixes.length)
@@ -590,7 +590,6 @@ Math.floor(Math.random()*suffixes.length)
 Math.floor(Math.random()*9999);
 
 }
-
 const box=document.getElementById("logBox");
 
 function addLog(){
@@ -604,7 +603,7 @@ actions[Math.floor(Math.random()*actions.length)];
 const cheat=
 cheats[Math.floor(Math.random()*cheats.length)];
 
-const name=nickname();
+const playerName=generateNickname();
 
 const div=document.createElement("div");
 
@@ -621,7 +620,7 @@ div.classList.add("banned");
 }
 
 div.textContent=
-`[${country}] ${name} | ${action} | ${cheat}`;
+`[${country}] ${playerName} | ${action} | ${cheat}`;
 
 box.prepend(div);
 
