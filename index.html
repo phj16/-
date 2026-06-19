@@ -1,17 +1,19 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>GG Security | GPG Anti-Cheat</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 html{
@@ -24,6 +26,8 @@ color:white;
 overflow-x:hidden;
 }
 
+/* 배경 */
+
 body::before{
 content:"";
 position:fixed;
@@ -32,28 +36,34 @@ background:
 radial-gradient(circle at 20% 20%,#00d9ff22,transparent 25%),
 radial-gradient(circle at 80% 40%,#8f3dff22,transparent 25%),
 radial-gradient(circle at 50% 90%,#ff00aa22,transparent 25%);
-animation:bg 12s infinite alternate;
+animation:bgShift 15s infinite alternate;
 z-index:-2;
 }
 
-@keyframes bg{
-from{filter:hue-rotate(0deg);}
-to{filter:hue-rotate(60deg);}
+@keyframes bgShift{
+from{
+filter:hue-rotate(0deg);
 }
+to{
+filter:hue-rotate(60deg);
+}
+}
+
+/* 헤더 */
 
 header{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 background:rgba(0,0,0,.7);
-backdrop-filter:blur(10px);
-z-index:100;
+backdrop-filter:blur(12px);
+z-index:999;
 }
 
 nav{
 max-width:1200px;
 margin:auto;
-padding:15px 30px;
+padding:18px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -62,11 +72,11 @@ align-items:center;
 .logo{
 display:flex;
 align-items:center;
-gap:10px;
+gap:12px;
 }
 
 .logo img{
-width:50px;
+width:55px;
 }
 
 .logo span{
@@ -78,7 +88,14 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:20px;
+transition:.3s;
 }
+
+nav a:hover{
+color:#00d9ff;
+}
+
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -99,45 +116,65 @@ align-items:center;
 
 .hero h1{
 font-size:4rem;
+line-height:1.1;
 margin-bottom:20px;
 }
 
 .gradient{
-background:linear-gradient(90deg,#00d9ff,#8f3dff,#ff00aa);
+background:linear-gradient(
+90deg,
+#00d9ff,
+#8f3dff,
+#ff00aa
+);
 -webkit-background-clip:text;
 color:transparent;
 }
 
 .hero p{
-color:#ccc;
-font-size:1.1rem;
+font-size:1.15rem;
 line-height:1.8;
+color:#cfcfcf;
 }
 
-.hero img{
+.hero-logo{
+text-align:center;
+}
+
+.hero-logo img{
 width:420px;
 max-width:100%;
-animation:float 4s ease-in-out infinite;
+animation:floating 4s ease-in-out infinite;
 filter:
 drop-shadow(0 0 20px #00d9ff)
 drop-shadow(0 0 50px #8f3dff);
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
+@keyframes floating{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-20px);
+}
 }
 
 .btn{
 display:inline-block;
-margin-top:25px;
-padding:14px 30px;
-background:linear-gradient(90deg,#00d9ff,#8f3dff);
+margin-top:30px;
+padding:15px 35px;
 border-radius:999px;
-color:white;
 text-decoration:none;
 font-weight:bold;
+color:white;
+background:linear-gradient(
+90deg,
+#00d9ff,
+#8f3dff
+);
 }
+
+/* 공통 */
 
 section{
 padding:100px 30px;
@@ -160,15 +197,17 @@ color:#aaa;
 margin-bottom:50px;
 }
 
+/* 통계 */
+
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
 .stat{
 background:#0d1020;
-padding:30px;
+padding:35px;
 border-radius:20px;
 text-align:center;
 }
@@ -177,6 +216,8 @@ text-align:center;
 font-size:3rem;
 color:#ffd76a;
 }
+
+/* 카드 */
 
 .cards{
 display:grid;
@@ -194,7 +235,7 @@ transition:.3s;
 
 .card:hover{
 transform:translateY(-8px);
-box-shadow:0 0 20px #00d9ff55;
+box-shadow:0 0 25px #00d9ff55;
 }
 
 .card h3{
@@ -202,24 +243,31 @@ color:#00d9ff;
 margin-bottom:15px;
 }
 
-.gpg{
+/* GPG */
+
+.gpg-logo{
 text-align:center;
-margin-bottom:50px;
+margin-bottom:60px;
 }
 
-.gpg img{
-width:300px;
+.gpg-logo img{
+width:320px;
 max-width:90%;
-animation:float 5s ease-in-out infinite;
+animation:floating 5s ease-in-out infinite;
+filter:
+drop-shadow(0 0 15px #ff00aa)
+drop-shadow(0 0 40px #8f3dff);
 }
+
+/* 모니터 */
 
 .monitor{
 background:#050813;
-padding:20px;
+padding:25px;
 border-radius:20px;
-height:350px;
-overflow:hidden;
 border:1px solid #00d9ff55;
+height:420px;
+overflow:hidden;
 }
 
 .log{
@@ -232,6 +280,8 @@ gap:10px;
 padding:12px;
 border-radius:10px;
 font-family:monospace;
+font-size:.95rem;
+animation:fade .4s;
 }
 
 .detected{
@@ -249,27 +299,46 @@ background:#ff003322;
 color:#ff5577;
 }
 
+@keyframes fade{
+from{
+opacity:0;
+transform:translateX(-20px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+/* footer */
+
 footer{
-text-align:center;
 padding:40px;
+text-align:center;
 color:#888;
+border-top:1px solid rgba(255,255,255,.08);
 }
 
 @media(max-width:900px){
+
 .hero-content{
 grid-template-columns:1fr;
 text-align:center;
 }
+
 .hero h1{
 font-size:2.5rem;
 }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <nav>
 
 <div class="logo">
@@ -284,6 +353,7 @@ font-size:2.5rem;
 </div>
 
 </nav>
+
 </header>
 
 <section class="hero">
@@ -298,28 +368,21 @@ Protecting<br>
 Competitive Gaming
 </span>
 </h1>
-<footer>
-© 2026 GG Security | Powered by GPG
-<br>
-<span style="font-size:0.8rem;color:#666;">
-Founder · 10708 박현중
-</span>
-</footer>
+
 <p>
-GG Security는 공정한 경쟁 환경을 위한
-차세대 안티치트 기술 기업입니다.
-GPG(Game Protection Guard)는
-실시간 치트 탐지, 행동 분석,
-커널 수준 보호를 제공합니다.
+GG Security는 차세대 안티치트 기술을 통해
+전 세계 플레이어에게 공정한 경쟁 환경을 제공합니다.
+GPG(Game Protection Guard)는 실시간 치트 탐지,
+행동 분석, 커널 수준 보호를 제공합니다.
 </p>
 
-<a class="btn" href="#gpg">
+<a href="#gpg" class="btn">
 Explore GPG
 </a>
 
 </div>
 
-<div>
+<div class="hero-logo">
 <img src="gg.png">
 </div>
 
@@ -337,6 +400,15 @@ GG Security
 
 <p class="subtitle">
 Next Generation Anti-Cheat Company
+</p>
+
+<p style="
+font-size:.85rem;
+color:#666;
+text-align:center;
+margin-top:-30px;
+margin-bottom:40px;">
+Founder · 10708 박현중
 </p>
 
 <div class="stats">
@@ -371,15 +443,13 @@ Next Generation Anti-Cheat Company
 
 <div class="container">
 
-<h2 class="title">
-GPG
-</h2>
+<h2 class="title">GPG</h2>
 
 <p class="subtitle">
 Game Protection Guard
 </p>
 
-<div class="gpg">
+<div class="gpg-logo">
 <img src="gpg.png">
 </div>
 
@@ -387,12 +457,12 @@ Game Protection Guard
 
 <div class="card">
 <h3>Kernel Defense</h3>
-<p>운영체제 수준에서 치트 접근을 차단합니다.</p>
+<p>운영체제 수준에서 치트 프로그램 접근을 차단합니다.</p>
 </div>
 
 <div class="card">
 <h3>Behavior AI</h3>
-<p>비정상적인 플레이 패턴을 탐지합니다.</p>
+<p>플레이 패턴을 분석하여 신규 치트를 탐지합니다.</p>
 </div>
 
 <div class="card">
@@ -407,12 +477,12 @@ Game Protection Guard
 
 <div class="card">
 <h3>Aimbot Detection</h3>
-<p>자동 조준 패턴을 분석하여 탐지합니다.</p>
+<p>자동 조준 및 비정상적 명중률을 감지합니다.</p>
 </div>
 
 <div class="card">
 <h3>Wallhack Protection</h3>
-<p>비정상적인 시야 정보 접근을 차단합니다.</p>
+<p>비정상적인 시야 정보를 분석합니다.</p>
 </div>
 
 </div>
@@ -430,26 +500,12 @@ LIVE THREAT MONITOR
 </h2>
 
 <p class="subtitle">
-Global Detection Network
+GPG Global Detection Network
 </p>
 
 <div class="monitor">
 
-<div class="log" id="logBox">
-
-<div class="entry detected">
-[DETECTED] AIMBOT SIGNATURE
-</div>
-
-<div class="entry blocked">
-[BLOCKED] WALLHACK PROCESS
-</div>
-
-<div class="entry banned">
-[BANNED] ACCOUNT FLAGGED
-</div>
-
-</div>
+<div class="log" id="logBox"></div>
 
 </div>
 
@@ -459,49 +515,127 @@ Global Detection Network
 
 <footer>
 © 2026 GG Security | Powered by GPG
+<br><br>
+<span style="font-size:.8rem;color:#666;">
+Founder · 10708 박현중
+</span>
 </footer>
 
 <script>
 
-const messages=[
-"[DETECTED] AIMBOT SIGNATURE",
-"[DETECTED] MEMORY MODIFICATION",
-"[DETECTED] WALLHACK MODULE",
-"[BLOCKED] CHEAT PROCESS TERMINATED",
-"[BLOCKED] DRIVER ACCESS DENIED",
-"[BANNED] ACCOUNT FLAGGED",
-"[BANNED] PERMANENT BAN ISSUED"
+const countries=[
+"KR","US","JP","CN","DE",
+"FR","GB","CA","AU","BR",
+"SG","IN","SE","NL","PL"
 ];
+
+const actions=[
+"DETECTED",
+"BLOCKED",
+"BANNED",
+"PERMANENT BAN",
+"ACCOUNT SUSPENDED",
+"HARDWARE BANNED"
+];
+
+const cheats=[
+
+"AIMBOT",
+"WALLHACK",
+"TRIGGERBOT",
+"ESP HACK",
+"NO RECOIL",
+"RAPID FIRE",
+"AUTO CLICKER",
+"MACRO ABUSE",
+"SPEED HACK",
+"TELEPORT HACK",
+"MEMORY EDIT",
+"DLL INJECTION",
+"PACKET EDIT",
+"KERNEL BYPASS",
+"RADAR HACK",
+"AUTO FARM",
+"AUTO SKILL",
+"RESOURCE DUPLICATION",
+"BOOST TOOL",
+"THIRD PARTY CHEAT"
+
+];
+
+const prefixes=[
+"Shadow","Dark","Ghost",
+"Rapid","Silent","Nova",
+"Cyber","Storm","Alpha",
+"Frost","Neon","Iron"
+];
+
+const suffixes=[
+"Sniper","Hunter","Wolf",
+"Ace","Blade","Knight",
+"Tiger","Arrow","Strike",
+"Runner","Dragon","Player"
+];
+
+function nickname(){
+
+return prefixes[
+Math.floor(Math.random()*prefixes.length)
+]
++
+suffixes[
+Math.floor(Math.random()*suffixes.length)
+]
++
+Math.floor(Math.random()*9999);
+
+}
 
 const box=document.getElementById("logBox");
 
-setInterval(()=>{
+function addLog(){
+
+const country=
+countries[Math.floor(Math.random()*countries.length)];
+
+const action=
+actions[Math.floor(Math.random()*actions.length)];
+
+const cheat=
+cheats[Math.floor(Math.random()*cheats.length)];
+
+const name=nickname();
 
 const div=document.createElement("div");
 
-const text=
-messages[Math.floor(Math.random()*messages.length)];
+div.classList.add("entry");
 
-div.className="entry";
-
-if(text.includes("DETECTED"))
+if(action==="DETECTED"){
 div.classList.add("detected");
-
-if(text.includes("BLOCKED"))
+}
+else if(action==="BLOCKED"){
 div.classList.add("blocked");
-
-if(text.includes("BANNED"))
+}
+else{
 div.classList.add("banned");
+}
 
-div.textContent=text;
+div.textContent=
+`[${country}] ${name} | ${action} | ${cheat}`;
 
 box.prepend(div);
 
-if(box.children.length>15){
+if(box.children.length>18){
 box.removeChild(box.lastChild);
 }
 
-},1500);
+}
+
+for(let i=0;i<10;i++){
+addLog();
+}
+
+setInterval(addLog,1200);
 
 </script>
 
